@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -16,7 +16,8 @@ app.use(express.static("public"));
 
 //if it doesnt exist will make it
 ////////////////////////////////HAS PASSWORD IN SO DONT PUT ON GIT /////////////
-mongoose.connect("mongodb+srv://phy5prtAdmin:B00pBeep!@cluster0-su305.mongodb.net/todolistDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://phy5prtAdmin:"+process.env.PASSWORD_ATLASDB+"@cluster0-su305.mongodb.net/todolistDB", {useNewUrlParser:true});
+mongoose.set("useCreateIndex", true);
 
 // mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true});
 const Schema = mongoose.Schema;
